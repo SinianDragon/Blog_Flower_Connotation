@@ -242,6 +242,7 @@
             // 获取用户名和密码
             let username = document.getElementById('uname_register').value;
             let password = document.getElementById('password_register').value;
+        
             if (!username || !password) {
             alert('用户名或密码不能为空');
             return;
@@ -283,6 +284,8 @@
           // 获取用户名和密码
           let username = document.getElementById('uname_login').value;
           let password = document.getElementById('password_login').value;
+      
+
           if (!username || !password) {
         alert('用户名或密码不能为空');
         return;
@@ -335,7 +338,6 @@
     signUpBtn.addEventListener("click", () => {
         container.classList.add("right-panel-active");
     });
-
     fistForm.addEventListener("submit", (e) => e.preventDefault());
     secondForm.addEventListener("submit", (e) => e.preventDefault());
 </script>
