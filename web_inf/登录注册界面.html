@@ -68,7 +68,7 @@
             <h2 class="form__title">登录</h2>
             <label for="uname_login"></label><input type="text" placeholder="用户名" ID="uname_login" class="input" />
             <label for="password_login"></label><input type="password" placeholder="密码" ID="password_login"
-                class="input" />
+                class="input"/>
             <button id="login-button" class="btn">确认登录</button>
             <button id="forgetpassword-button" class="btn">忘记密码</button>
         </form>
@@ -129,8 +129,13 @@
         <button id="backlogin-button" class="btn">返回登录</button>
     </form>
 </div>
-
-
+<script>
+    let backLoginButton = document.getElementById('backlogin-button');
+    backLoginButton.addEventListener('click', function () {
+        box.classList.toggle('flip');
+        container.classList.toggle('flip');
+    });
+</script>
 <script>
     const signInBtn = document.getElementById("signIn");
     const signUpBtn = document.getElementById("signUp");
@@ -140,15 +145,12 @@
     const box = document.querySelector(".box");
 
     let forgetPasswordButton = document.getElementById('forgetpassword-button');
-    let backLoginButton = document.getElementById('backlogin-button');
+
     forgetPasswordButton.addEventListener('click', function () {
         box.classList.toggle('flip');
         container.classList.toggle('flip');
     });
-    backLoginButton.addEventListener('click', function () {
-        container.classList.toggle('flip');
-        box.classList.toggle('flip');
-    });
+
 
     signInBtn.addEventListener("click", () => {
         container.classList.remove("right-panel-active");

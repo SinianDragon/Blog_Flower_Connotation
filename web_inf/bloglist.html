@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客列表页</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/bloglist.css">
+</head>
+<body>
+<!-- 导航栏 nav 是导航整个次的缩写 -->
+<div class="nav">
+    <!-- logo -->
+    <img src="../img/背景图1.jpg" alt="">
+    <div class="title">花语社区博客系统</div>
+    <!-- 只是一个空白，用来把后面的链接挤过去 -->
+    <!-- 这是一个简单粗暴的写法 -->
+    <div class="spancer"></div>
+    <a href="../web_inf/bloglist.html">主页</a>
+    <a href="../web_inf/blogedit.html">写博客</a>
+    <!-- 这里的地址回头在说 -->
+    <a href="#">注销</a>
+</div>
+
+<!-- 页面的主题部分 -->
+<div class="container">
+    <!-- 左侧信息 -->
+    <div class="container-left">
+        <!-- 这个div表示整个用户信息的区域 -->
+        <div class="card">
+            <!-- 用户的头像 -->
+            <img src="../img/背景.jpg" alt="">
+            <!-- 用户名 -->
+            <h3>花语论坛主</h3>
+            <!-- GitHub地址 -->
+            <a href="https://github.com">github 地址</a>
+            <!-- 统计信息 -->
+            <div class="counter">
+                <span>文章</span>
+                <span>分类</span>
+            </div>
+            <div class="counter">
+                <span>2</span>
+                <span>1</span>
+            </div>
+        </div>
+
+    </div>
+    <!-- 右侧信息 -->
+    <div class="container-right">
+        <!-- 这个div表示一个博客 -->
+        <div class="blog">
+            <!-- 博客标题 -->
+            <div class="title">第一篇博客</div>
+            <!-- 博客发布时间 -->
+            <div class="data">2023-12-11 11:00:00</div>
+            <!-- 博客的摘要 -->
+            <div class="desc">
+                <!-- 使用Lorem 生成一段随机的字符串 -->
+                欢迎来到花语社区
+            </div>
+            <!-- html中不能直接写大于号、小于号可能会被当成标签的一部分，我们使用转移字符 用&gt;表示大于号，&lt;表示小于号-->
+            <a href="blog_detail.html?blogId=1">查看全文 &gt;&gt;</a>
+        </div>
+
+        <div class="blog">
+            <!-- 博客标题 -->
+            <div class="title">第二篇博客</div>
+            <!-- 博客发布时间 -->
+            <div class="data">2023-12-11 11:00:00</div>
+            <!-- 博客的摘要 -->
+            <div class="desc">
+                <!-- 使用Lorem 生成一段随机的字符串 -->
+                Your Choice ->  Only One Choice, 你已经做出了人生中最完美的选择 -> 加入花语社区
+            </div>
+            <!-- html中不能直接写大于号、小于号可能会被当成标签的一部分，我们使用转移字符 用&gt;表示大于号，&lt;表示小于号-->
+            <a href="blog_detail.html?blogId=2">查看全文 &gt;&gt;</a>
+        </div>
+
+        <div class="blog">
+            <!-- 博客标题 -->
+            <div class="title">第三篇博客</div>
+            <!-- 博客发布时间 -->
+            <div class="data">2023-12-11 11:00:00</div>
+            <!-- 博客的摘要 -->
+            <div class="desc">
+                <!-- 使用Lorem 生成一段随机的字符串 -->
+                我们是世界上最强的花语社区，欢迎加入我们这个大家庭！！！
+            </div>
+            <!-- 这里使用blogId=3用来区分跳转的是不同的博客内容 -->
+            <!-- 由于博客列表页中有很多博客，期望点击不同的博客，跳转的博客详情页是不同的内容 -->
+            <a href="blog_detail.html?blogId=3">查看全文 &gt;&gt;</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
