@@ -1,0 +1,21 @@
+.f_c {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+.left_img {
+    width:400px;
+    height: 300px;
+    }
+.right_text {
+    width: 400px;
+    height: 300px;
+    box-sizing: border-box;
+    }
+img {
+    max-width: 100%;
+    }
+p{
+font-size: 30px;
+}

@@ -27,7 +27,7 @@
         body {
             background-color: var(--lightblue);
             align-items: center;
-            background: url("../img/背景图1.jpg");
+            background: url("../img/登录背景图1.jpg");
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -110,7 +110,7 @@
 
         .overlay {
 
-            background: url("../img/背景图1.jpg");
+            background: url("../img/登录背景图1.jpg");
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -271,7 +271,7 @@
             <h2 class="form__title">登录</h2>
             <label for="uname_login"></label><input type="text" placeholder="User" ID="uname_login" class="input"/>
             <label for="password_login"></label><input type="password" placeholder="Password" ID="password_login" class="input"/>
-            <a href="../web inf/找回密码界面.html" class="link">忘记密码?</a>
+            <a href="../web/找回密码界面.html" class="link" >忘记密码?</a>
             <button id="login-button" class="btn">确认登录</button>
         </form>
     </div>
@@ -303,6 +303,7 @@
                 if (res.data.code === '0') {  // 当响应的编码为 0 时，说明注册成功
                     // 显示后端响应的成功信息
                     alert(res.data.msg)
+                    window.open("首页.html","_self")
                 } else {  // 当响应的编码不为 0 时，说明注册失败
                     // 显示后端响应的失败信息
                     alert(res.data.msg)
