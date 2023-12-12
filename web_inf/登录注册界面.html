@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/found.css">
+</head>
+<script src="../js/axios.js"></script>
+
+<div class="container">
+    <!-- Sign Up -->
+    <div class="container__form container--signup">
+        <form action="#" class="form" id="form1">
+            <h2 class="form__title">注册</h2>
+            <label for="uname_register"></label><input type="text" placeholder="用户名" ID="uname_register"
+                                                       class="input" />
+            <label for="password_register"></label><input type="password" placeholder="密码" ID="password_register"
+                                                          class="input" />
+            <label for="repassword_register"></label><input type="repassword" placeholder="重复密码"
+                                                            ID="repassword_register" class="input" />
+            <label for="uemail_register"></label><input type="email" placeholder="邮箱" ID="uemail_register"
+                                                        class="input" />
+            <button id="register-button" class="btn">提交注册</button>
+        </form>
+    </div>
+    <script>
+        let registerButton = document.getElementById('register-button');
+        // 为注册按钮添加点击事件监听器
+        registerButton.addEventListener('click', function (event) {
+            // 阻止表单的默认提交行为
+            event.preventDefault();
+            // 获取用户名和密码
+            let username = document.getElementById('uname_register').value;
+            let password = document.getElementById('password_register').value;
+            let repassword = document.getElementById('repassword_register').value;
+            let email = document.getElementById('uemail_register').value;
+            if (password != repassword) {
+                alert('两次密码不一致');
+                return;
+            }
+            if (!username || !password) {
+                alert('用户名或密码不能为空');
+                return;
+            }
+            // 使用axios发送POST请求
+            axios.post('http://10.16.50.21:3036/user/register', {
+                uname: username,
+                password: password,
+                email: email
+            }, ).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
+                console.log(res.data)
+                if (res.data.code === '0') { // 当响应的编码为 0 时，说明注册成功
+                    // 显示后端响应的成功信息
+                    alert(res.data.msg)
+                } else { // 当响应的编码不为 0 时，说明注册失败
+                    // 显示后端响应的失败信息
+                    alert(res.data.msg)
+                }
+            });
+        });
+    </script>
+
+    <!-- Sign In -->
+    <div class="container__form container--signin">
+        <form action="#" class="form" id="form2">
+            <h2 class="form__title">登录</h2>
+            <label for="uname_login"></label><input type="text" placeholder="用户名" ID="uname_login" class="input" />
+            <label for="password_login"></label><input type="password" placeholder="密码" ID="password_login"
+                                                       class="input"/>
+            <button id="login-button" class="btn">确认登录</button>
+            <button id="forgetpassword-button" class="btn">忘记密码</button>
+        </form>
+    </div>
+    <script>
+        let loginButton = document.getElementById('login-button');
+        // 为注册按钮添加点击事件监听器
+        loginButton.addEventListener('click', function (event) {
+            // 阻止表单的默认提交行为
+            event.preventDefault();
+            // 获取用户名和密码
+            let username = document.getElementById('uname_login').value;
+            let password = document.getElementById('password_login').value;
+            if (!username || !password) {
+                alert('用户名或密码不能为空');
+                return;
+            }
+            // 使用axios发送POST请求
+            axios({
+                url: 'http://10.16.50.21:3036/user/login',
+                params: {
+                    uname: username,
+                    password: password
+                },
+                method: 'post'
+            }).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
+                console.log(res.data)
+                if (res.data.code === '0') { // 当响应的编码为 0 时，说明注册成功
+                    // 显示后端响应的成功信息
+                    alert(res.data.msg)
+                } else { // 当响应的编码不为 0 时，说明注册失败
+                    // 显示后端响应的失败信息
+                    alert(res.data.msg)
+                }
+            });
+        });
+    </script>
+
+    <!-- Overlay -->
+    <div class="container__overlay">
+        <div class="overlay">
+            <div class="overlay__panel overlay--left">
+                <button class="btn" id="signIn">登录</button>
+            </div>
+            <div class="overlay__panel overlay--right">
+                <button class="btn" id="signUp">注册</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <form action="#" class="form" id="form1">
+        <h2 class="form__title">找回密码</h2>
+        <label for="uname_found"></label><input type="text" placeholder="用户名" ID="uname_found" class="input" />
+        <label for="email_found"></label><input type="email" placeholder="邮箱" ID="email_found" class="input" />
+        <button id="foundpassword-button" class="btn">找回密码</button>
+        <button id="backlogin-button" class="btn">返回登录</button>
+    </form>
+</div>
+<script>
+    let backLoginButton = document.getElementById('backlogin-button');
+    backLoginButton.addEventListener('click', function () {
+        box.classList.toggle('flip');
+        container.classList.toggle('flip');
+    });
+</script>
+<script>
+    const signInBtn = document.getElementById("signIn");
+    const signUpBtn = document.getElementById("signUp");
+    const fistForm = document.getElementById("form1");
+    const secondForm = document.getElementById("form2");
+    const container = document.querySelector(".container");
+    const box = document.querySelector(".box");
+
+    let forgetPasswordButton = document.getElementById('forgetpassword-button');
+
+    forgetPasswordButton.addEventListener('click', function () {
+        box.classList.toggle('flip');
+        container.classList.toggle('flip');
+    });
+
+
+    signInBtn.addEventListener("click", () => {
+        container.classList.remove("right-panel-active");
+    });
+    signUpBtn.addEventListener("click", () => {
+        container.classList.add("right-panel-active");
+    });
+    fistForm.addEventListener("submit", (e) => e.preventDefault());
+    secondForm.addEventListener("submit", (e) => e.preventDefault());
+    box.classList.add('flip');
+</script>
+
+
+</html>

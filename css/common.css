@@ -14,7 +14,7 @@ html {
 /* 图片的父元素是body，图片作为背景图，需要占满整个浏览器窗口，所以图片要填满整个父元素 */
 body {
     /*  */
-    background-image: url(../img/首页背景.jpg);
+    background-image: url(../img/首页背景1.jpg);
     /* 设置背景不平铺 */
     background-repeat: no-repeat;
     /* 设置背景位置水平居中，垂直居中 */
