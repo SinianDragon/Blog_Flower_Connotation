@@ -20,7 +20,7 @@
 body {
   background-color: var(--lightblue);
   align-items: center;
-  background: url("../img/背景图1.jpg");
+  background: url("../img/登录背景图1.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -107,7 +107,7 @@ body {
 
 .overlay {
 
-  background: url("../img/背景图1.jpg");
+  background: url("../img/登录背景图1.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
