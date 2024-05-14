@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="../css/navi2.css">
+    <link rel="stylesheet" href="../css/center.css">
+
+<script src="../js/axios.js"></script>
+<body>
+<div class="nav">
+    <div class="left-logo">
+        <div class="logo">
+            <a href="./个人信息.html" target="_blank"><img src="../img/登录背景图1.jpg" width="45" alt=""></a>
+        </div>
+    </div>
+    <div class="document">
+        <div>
+            <ul>
+
+                <li><a href="./首页.html">主页</a></li>
+                <li><a href="./花语.html">花语</a></li>
+                <li><a onclick=turnToPage()>语花</a></li>
+                <li><a href="./个人信息.html">个人信息完善</a></li>
+                <li><a href="个人信息主页.html">个人信息</a></li>
+                <li><a href="loginAndRegister.html" target="_blank" onclick="window.localStorage.clear()">注销</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function turnToPage(){
+        window.open("http://localhost:8080/blog_system_war_exploded/blog_list.html"+"?"+"userId="+window.localStorage.getItem('userId'))
+    }
+</script>
+
+<div class="profile-container">
+    <h2 class="profile-title">个人信息</h2>
+    <div class="profile-item"id="1">
+        <span class="profile-label">姓名：</span>
+        <span id="name_a" class="profile-value"></span>
+    </div>
+    <div class="profile-item"id="2">
+        <span class="profile-label">性别：</span>
+        <span id="sex_a" class="profile-value"></span>
+    </div>
+    <div class="profile-item"id="3">
+        <span class="profile-label">爱好：</span>
+        <span id="hobby_a" class="profile-value"></span>
+    </div>
+    <div class="profile-item"id="4">
+        <span class="profile-label">职业：</span>
+        <span id="occupation_a" class="profile-value"></span>
+    </div>
+    <div class="profile-item"id="5">
+        <span class="profile-label">年龄：</span>
+        <span id="age_a" class="profile-value"></span>
+    </div>
+</div>
+<style>
+    .profile-container {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ddddff;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+
+    .profile-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .profile-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .profile-label {
+        font-weight: bold;
+    }
+
+    .profile-value {
+        color: #f133f1;
+    }
+</style>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    const ip = 'localhost';
+    let h2 = document.querySelector(".profile-container>.profile-item>.profile-value");
+    console.log(h2)
+    $.ajax({
+        type: 'get',
+        url: 'http://' + ip + ':3036/user/findid' + '?uid=' + window.localStorage.getItem('userId'),
+        success: function (response) {
+            h2.innerHTML = response.data.uname
+            document.getElementById('sex_a').innerText=response.data.sex
+            document.getElementById('hobby_a').innerText=response.data.hobby
+            document.getElementById('occupation_a').innerText=response.data.occupation
+            document.getElementById('age_a').innerText=response.data.age
+        }
+    });
+
+
+</script>
+</body>
+</html>

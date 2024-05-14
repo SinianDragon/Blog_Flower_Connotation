@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="../css/navi2.css">
+    <link rel="stylesheet" href="../css/center.css">
+</head>
+<script src="../js/axios.js"></script>
+<body>
+<div class="nav">
+    <div class="left-logo">
+        <div class="logo">
+            <a href="./个人信息.html" target="_blank"><img src="../img/登录背景图1.jpg" width="45" alt=""></a>
+        </div>
+    </div>
+    <div class="document">
+        <div>
+            <ul>
+
+                <li><a href="./首页.html">主页</a></li>
+                <li><a href="./花语.html">花语</a></li>
+                <li><a onclick=turnToPage()>语花</a></li>
+                <li><a href="./个人信息.html">个人信息完善</a></li>
+                <li><a href="个人信息主页.html">个人信息</a></li>
+                <li><a href="loginAndRegister.html" target="_blank" onclick="window.localStorage.clear()">注销</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function turnToPage(){
+        window.open("http://localhost:8080/blog_system_war_exploded/blog_list.html"+"?"+"userId="+window.localStorage.getItem('userId'))
+    }
+</script>
+<div class="主体区">
+    <div class="注册框">
+        <form action="#" class="form" id="form3">
+            <h2 class="form__title">个人信息完善</h2>
+            <span>用户名</span>
+            <label for="uname_a"></label><input type="text" class="input" id="uname_a"><br>
+            <span>年龄</span>
+            <label for="age_a"></label><input type="text" class="input" id="age_a"><br>
+            <span>性别</span>
+            <label for="sex_a"></label><input type="text" class="input" id="sex_a"><br>
+            <span>爱好</span>
+            <label for="hobby_a"></label><input type="text" class="input" id="hobby_a"><br>
+            <span>职业</span>
+            <label for="occupation_a"></label><input type="text" class="input" id="occupation_a"><br>
+            <span>帖子数</span>
+            <label for="point_a"></label><input type="text" class="input" id="point_a"><br>
+            <button id="confirm_TheSave" >确认修改</button>
+        </form>
+    </div>
+</div>
+<script>
+    const ip = 'localhost';
+    let confirmTheSave = document.getElementById('confirm_TheSave');
+    //阻止表单默认提交
+    confirmTheSave.onclick = function (event) {
+        event.preventDefault();
+    }
+    // 为提交按钮添加点击事件监听器
+    confirmTheSave.addEventListener('click', function (event) {
+        let uname = document.getElementById('uname_a').value;
+        let age = document.getElementById('age_a').value;
+        let sex = document.getElementById('sex_a').value;
+        let hobby = document.getElementById('hobby_a').value;
+        let occupation = document.getElementById('occupation_a').value;
+        let point = document.getElementById('point_a').value;
+        axios.post('http://' + ip + ':3036/user/update', {
+            uname: uname,
+            age: age,
+            sex: sex,
+            hobby: hobby,
+            occupation: occupation,
+            point: point,
+        },).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
+            console.log(res.data)
+            if (res.data.code === '1') {
+                // 显示后端响应的成功信息
+                alert(res.data.msg)
+            } else { // 当响应的编码不为 0 时，说明注册失败
+                // 显示后端响应的失败信息
+                alert(res.data.msg)
+            }
+        });
+    });
+</script>
+</body>
+</html>

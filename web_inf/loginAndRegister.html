@@ -60,7 +60,7 @@
 </div>
 
 <script>
-    const ip = '10.16.109.49';
+    const ip = 'localhost';
     let registerButton = document.getElementById('register-button');
     // 为注册按钮添加点击事件监听器
     registerButton.addEventListener('click', function (event) {
@@ -86,7 +86,7 @@
             email: email
         }, ).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
             console.log(res.data)
-            if (res.data.code === '0') { // 当响应的编码为 0 时，说明注册成功
+            if (res.data.code === '1') { // 当响应的编码为 0 时，说明注册成功
                 // 显示后端响应的成功信息
                 alert(res.data.msg)
             } else { // 当响应的编码不为 0 时，说明注册失败
@@ -117,9 +117,10 @@
             method: 'post'
         }).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
             console.log(res.data)
-            if (res.data.code === '0') { // 当响应的编码为 0 时，说明注册成功
-                // 显示后端响应的成功信息
+            if (res.data.code === '1') {
+                window.localStorage.setItem('userId',res.data.data.uid);
                 alert(res.data.msg)
+                window.location.replace('首页.html');
             } else { // 当响应的编码不为 0 时，说明注册失败
                 // 显示后端响应的失败信息
                 alert(res.data.msg)

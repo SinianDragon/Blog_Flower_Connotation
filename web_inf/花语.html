@@ -23,9 +23,11 @@
             <ul>
                 <li><a href="首页.html" target="_blank">首页</a></li>
                 <li><a href="花语.html" target="_blank">花语</a></li>
-                <li><a href="blogdetail.html" target="_blank">语花</a></li>
+                <li><a onclick=turnToPage()>语花</a></li>
                 <li><a href="登录注册界面.html">登录/注册</a></li>
-                <li><a href="#" target="_blank">完善个人信息</a></li>
+                <li><a href="个人信息.html" target="_blank">完善个人信息</a></li>
+                <li><a href="个人信息主页.html">个人信息</a></li>
+                <li><a href="loginAndRegister.html" target="_blank" onclick="window.localStorage.clear()">注销</a></li>
             </ul>
         </div>
     </div>
@@ -36,6 +38,11 @@
         </form>
     </div>
 </div>
+<script>
+    function turnToPage(){
+        window.open("http://localhost:8080/blog_system_war_exploded/blog_list.html"+"?"+"userId="+window.localStorage.getItem('userId'))
+    }
+</script>
 <!--f1-->
 <div class="f_c">
     <div class="left_img">

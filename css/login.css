@@ -17,23 +17,10 @@
   Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-body {
-  background-color: var(--lightblue);
-  align-items: center;
-  background: url("../img/登录背景图1.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  height: 100vh;
-  place-items: center;
-}
 
 .form__title {
   font-weight: 300;
-  margin: 0;
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
 }
 
 .link {
@@ -61,7 +48,7 @@ body {
   position: absolute;
   top: 0;
   transition: all 1s;
-  
+
 }
 .container.flip {
   transform: rotateY(180deg);
@@ -107,10 +94,7 @@ body {
 
 .overlay {
 
-  background: url("../img/登录背景图1.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url("../img/登录背景图1.jpg") no-repeat fixed center;
   background-size: cover;
   height: 100%;
   left: -100%;
@@ -205,13 +189,13 @@ body {
 
   0%,
   49.99% {
-      opacity: 0;
-      z-index: 1;
+    opacity: 0;
+    z-index: 1;
   }
 
   50%,
   100% {
-      opacity: 1;
-      z-index: 5;
+    opacity: 1;
+    z-index: 5;
   }
 }
