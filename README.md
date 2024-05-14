@@ -1,5 +1,5 @@
 # flower_connotation
-web实训
-邓辉--前端
-宋智鑫--后端
-林哲--全栈
+Web Programming-Practical School Training
+DH--Front End
+Older--Back End
+SinianDragon--Full Stack
